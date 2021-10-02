@@ -26,7 +26,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         setPreferredSize(new Dimension(w, h));
         addMouseListener(this);
         timer = new Timer(500, this);
-        this.cellsPerRow = cpr;
+        this.cellsPerRow = cpr ;
 
         // 2. Calculate the cell size.
 
