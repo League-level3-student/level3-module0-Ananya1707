@@ -6,7 +6,7 @@ public class _01_IntroToArrays {
     public static void main(String[] args) {
         // 1. declare and Initialize an array 5 Strings
         String[] colors = new String[5];
-        //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
+        //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
         colors[0] = "Red";
         colors[1] = "Orange";
         colors[2] = "Yellow";
