@@ -53,7 +53,80 @@ public class TheWrongWayCow {
     public static int[] findWrongWayCow(final char[][] field) {
         // Fill in the code to return the [col, row] coordinate position of the
         // head (letter 'c') of the wrong way cow!
-        
-        return null;
+        int[] count = new int[4];
+        int[] wrongWayCow = new int[2];
+    
+    	 for(int row = 0; row < field.length; row++) {
+             for(int col = 0; col < field[row].length; col++) {
+            	 if(field[row][col] == 'c') {
+            		 if(col < field[row].length - 2) {
+            			//left to right
+                		 if(field[row][col+1] == 'o') {
+                			 if(field[row][col+2] == 'w') {
+                				 count[0]+=1;
+                				 wrongWayCow[0] = row;
+                				 wrongWayCow[1] = col;       				 
+
+                			 }
+                		 }
+            		 }
+            	     
+            		 if(col > 1) {
+            			//right to left
+            			 if(field[row][col-1] == 'o') {
+                			 if(field[row][col-2] == 'w') {
+                				 count[1]+=1;
+                				 wrongWayCow[0] = row;
+                				 wrongWayCow[1] = col;
+                				 
+                			 }
+                		 }
+            		 }
+            		
+            		 if(row > 1) {
+            			//down to up
+                		 if(field[row-1][col] == 'o') {
+                			 if(field[row-2][col] == 'w') {
+                				 count[2]+=1;
+                				 wrongWayCow[0] = row;
+                				 wrongWayCow[1] = col;
+                				 
+                			 }
+                		 }
+            		 }
+            		
+            		 if(row < field.length - 2) {
+            			//down to up
+                		 if(field[row+1][col] == 'o') {
+                			 if(field[row+2][col] == 'w') {
+                				 count[3]+=1;
+                				 wrongWayCow[0] = row;
+                				 wrongWayCow[1] = col;
+                				 
+                			 }
+                		 }
+            		 }
+            		
+            		             		 
+            	 }
+             }
+        }
+    	 
+    	 return wrongWayCow;
+    		 
+    		 
+    	 
+//    	 for(int i = 0; i<count.length; i++){
+//			 if(count[i] == 1) {
+//				 return wrongWayCow;
+//		    	
+//			 }
+//			 else {
+//				 return null;
+//			 }
+			 
+		}
+
+
     }
-}
+
