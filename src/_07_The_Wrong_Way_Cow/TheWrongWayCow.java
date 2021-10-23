@@ -48,13 +48,16 @@
 
 package _07_The_Wrong_Way_Cow;
 
+import java.util.Arrays;
+
 public class TheWrongWayCow {
 
     public static int[] findWrongWayCow(final char[][] field) {
         // Fill in the code to return the [col, row] coordinate position of the
         // head (letter 'c') of the wrong way cow!
-        int[] count = new int[4];
+        int[] count = {0,0,0,0};
         int[] wrongWayCow = new int[2];
+        int[][] rowcol = new int[4][2];
     
     	 for(int row = 0; row < field.length; row++) {
              for(int col = 0; col < field[row].length; col++) {
@@ -64,8 +67,12 @@ public class TheWrongWayCow {
                 		 if(field[row][col+1] == 'o') {
                 			 if(field[row][col+2] == 'w') {
                 				 count[0]+=1;
-                				 wrongWayCow[0] = row;
-                				 wrongWayCow[1] = col;       				 
+                				 if(count[0] == 1) {
+                					 rowcol[0][0]=col;
+                					 rowcol[0][1]=row;
+
+                				 }
+                			     				 
 
                 			 }
                 		 }
@@ -76,8 +83,11 @@ public class TheWrongWayCow {
             			 if(field[row][col-1] == 'o') {
                 			 if(field[row][col-2] == 'w') {
                 				 count[1]+=1;
-                				 wrongWayCow[0] = row;
-                				 wrongWayCow[1] = col;
+                				 if(count[1] == 1) {
+                					 rowcol[1][0]=col;
+                					 rowcol[1][1]=row;
+
+                				 }
                 				 
                 			 }
                 		 }
@@ -88,45 +98,60 @@ public class TheWrongWayCow {
                 		 if(field[row-1][col] == 'o') {
                 			 if(field[row-2][col] == 'w') {
                 				 count[2]+=1;
-                				 wrongWayCow[0] = row;
-                				 wrongWayCow[1] = col;
+                				 if(count[2] == 1) {
+                					 rowcol[2][0]=col;
+                					 rowcol[2][1]=row;
+
+                				 }
                 				 
                 			 }
                 		 }
             		 }
             		
             		 if(row < field.length - 2) {
-            			//down to up
+            			//up to down
                 		 if(field[row+1][col] == 'o') {
                 			 if(field[row+2][col] == 'w') {
                 				 count[3]+=1;
-                				 wrongWayCow[0] = row;
-                				 wrongWayCow[1] = col;
+                				 if(count[3] == 1) {
+                					 rowcol[3][0]=col;
+                					 rowcol[3][1]=row;
+
+                				 }
                 				 
                 			 }
                 		 }
             		 }
-            		
-            		             		 
             	 }
+            	 
+            	
+            	 
              }
-        }
+    	 }
     	 
+    	 if(count[0] == 1) {
+    		 wrongWayCow[0]= rowcol[0][0];
+			 wrongWayCow[1]= rowcol[0][1];
+    		 
+    	 }
+    	 else if(count[1] == 1) {
+    		 wrongWayCow[0]= rowcol[1][0];
+			 wrongWayCow[1]= rowcol[1][1];
+    		 
+    	 }
+    	 else if(count[2] == 1) {
+    		 wrongWayCow[0]= rowcol[2][0];
+			 wrongWayCow[1]= rowcol[2][1];
+    		 
+    	 }
+    	 else if(count[3] == 1) {
+    		 wrongWayCow[0]= rowcol[3][0];
+			 wrongWayCow[1]= rowcol[3][1];
+    		 
+    	 }
+    	 
+    	 System.out.println(Arrays.toString(wrongWayCow));
     	 return wrongWayCow;
-    		 
-    		 
-    	 
-//    	 for(int i = 0; i<count.length; i++){
-//			 if(count[i] == 1) {
-//				 return wrongWayCow;
-//		    	
-//			 }
-//			 else {
-//				 return null;
-//			 }
-			 
-		}
-
 
     }
-
+}
